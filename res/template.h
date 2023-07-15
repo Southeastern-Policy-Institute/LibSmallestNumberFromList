@@ -9,20 +9,9 @@
 #     pragma once
 #   endif /* _MSC_VER */
     /* Include Files Here */
-#   if defined(_COMPILING_COMMON_) && defined(WIN32)
-#     define LIBSPEC __declspec(dllexport)
-#   elif !defined(_COMPILING_COMMON_) && defined(WIN32)
-#     define LIBSPEC __declspec(dllimport)
-#   else
-#     define LIBSPEC
-#   endif /* _COMPILING_COMMON_H_ */
-#   ifdef WIN32
-#     define LINKAGE __stdcall
-#   else
-#     define LINKAGE
-#   endif /* LINKAGE */
+#   include <util/universal_header.h>
 #   ifdef __cplusplus
-namespace namespacename {
+namespace snfl {
 
   /* C++ exclusive code here */
 
@@ -36,8 +25,7 @@ namespace namespacename {
     * This is for Windows DLL compatibility.
     */
 
-#   undef LINKAGE
-#   undef LIBSPEC
+#   include <util/universal_footer.h>
 #   ifdef __cplusplus
   };
 };

@@ -3,6 +3,13 @@
 #   elif !defined(ALIGN) && defined(_MSC_VER)
 #     define ALIGN(x) __declspec(align(x))
 #   endif /* ALIGN */
+#   ifdef   UNICODE
+#     define  PREFIX_L(x) L ## x
+typedef wchar_t tchar_t;
+#   else
+#     define  PREFIX_L(x) x
+typedef char tchar_t;
+#   endif /* UNICODE */
 #   if !defined(NULL) && defined(__cplusplus)
 #     define  NULL  nullptr
 #   elif !defined(NULL) && !defined(__cplusplus)
